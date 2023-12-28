@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/presentation/home/pages/dashboard_page.dart';
 
+import '../../../core/components/buttons.dart';
 import '../../../core/components/custom_text_field.dart';
 import '../../../core/constants/colors.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,6 +50,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           const SizedBox(height: 42.0),
+          Button.filled(
+            onPressed: () {
+              context.pushReplacement(const DashboardPage());
+            },
+            label: 'LOG IN',
+          ),
+
           // BlocConsumer<LoginBloc, LoginState>(
           //   listener: (context, state) {
           //     state.maybeWhen(
@@ -97,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
           const SizedBox(height: 24.0),
           GestureDetector(
             onTap: () {
-              // context.pushReplacement(const RegisterPage());
+              context.pushReplacement(const RegisterPage());
             },
             child: const Text.rich(
               TextSpan(
