@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_cbt_app/core/extensions/build_context_ext.dart';
-
+import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
 
 import '../constants/colors.dart';
 
