@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_fic10/data/models/responses/auth_response_model.dart';
 // import 'package:flutter_fic10/data/models/responses/auth_response_model.dart';
 
 import '../../../core/assets/assets.gen.dart';
@@ -42,10 +44,10 @@ class _HeaderHomeState extends State<HeaderHome> {
               const SizedBox(width: 16.0),
               SizedBox(
                 width: context.deviceWidth - 208.0,
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Halo,',
                       style: TextStyle(
                         color: Colors.white,
@@ -53,6 +55,23 @@ class _HeaderHomeState extends State<HeaderHome> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    FutureBuilder<AuthResponseModel?>(
+                      future: AuthLocalDataSource().getAuthData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                            snapshot.data!.user.name,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500),
+                            overflow: TextOverflow.ellipsis,
+                          );
+                        } else {
+                          return Text("No Date");
+                        }
+                      },
+                    )
                     // FutureBuilder<AuthResponseModel>(
                     //   future: AuthLocalDatasource().getAuthData(),
                     //   builder: (context, snapshot) {

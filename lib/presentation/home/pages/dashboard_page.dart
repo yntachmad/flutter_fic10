@@ -21,6 +21,12 @@ class _DashboardPageState extends State<DashboardPage> {
     const Center(
       child: Text('Notif'),
     ),
+    Center(
+      child: ElevatedButton(
+        onPressed: () {},
+        child: const Text('Logout'),
+      ),
+    ),
     // const LogoutWidget(),
   ];
 

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic10/core/components/buttons.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_fic10/data/models/request/register_request_model.dart';
 
 import '../../../core/components/custom_text_field.dart';
 import '../../../core/constants/colors.dart';
+import '../../home/pages/dashboard_page.dart';
+import '../bloc/register/register_bloc.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -51,48 +57,52 @@ class _RegisterPageState extends State<RegisterPage> {
             obscureText: true,
           ),
           const SizedBox(height: 24.0),
-          // BlocConsumer<RegisterBloc, RegisterState>(
-          //   listener: (context, state) {
-          //     state.maybeWhen(
-          //       orElse: () {},
-          //       success: (state) {
-          //         AuthLocalDatasource().saveAuthData(state);
-          //         ScaffoldMessenger.of(context).showSnackBar(
-          //           const SnackBar(
-          //             content: Text('REGISTER SUCCESS'),
-          //             backgroundColor: Colors.green,
-          //           ),
-          //         );
-          //         context.pushReplacement(const DashboardPage());
-          //       },
-          //     );
-          //   },
-          //   builder: (context, state) {
-          //     return state.maybeWhen(
-          //       orElse: () {
-          //         return Button.filled(
-          //           onPressed: () {
-          //             final dataRequest = RegisterRequestModel(
-          //               name: usernameController.text,
-          //               email: emailController.text,
-          //               password: passwordController.text,
-          //             );
-
-          //             context
-          //                 .read<RegisterBloc>()
-          //                 .add(RegisterEvent.register(dataRequest));
-          //           },
-          //           label: 'REGISTER',
-          //         );
-          //       },
-          //       loading: () {
-          //         return const Center(
-          //           child: CircularProgressIndicator(),
-          //         );
-          //       },
-          //     );
-          //   },
-          // ),
+          BlocConsumer<RegisterBloc, RegisterState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                success: (state) {
+                  AuthLocalDataSource().saveAuthData(state);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Register Success'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  Future.delayed(
+                    const Duration(seconds: 1),
+                    () => context.pushReplacement(
+                      const DashboardPage(),
+                    ),
+                  );
+                },
+              );
+            },
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return Button.filled(
+                    onPressed: () {
+                      final dataRequest = RegisterRequestModel(
+                        name: usernameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                      context.read<RegisterBloc>().add(
+                            RegisterEvent.register(dataRequest),
+                          );
+                    },
+                    label: 'Register',
+                  );
+                },
+                loading: () {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              );
+            },
+          ),
           const SizedBox(height: 24.0),
           GestureDetector(
             onTap: () {

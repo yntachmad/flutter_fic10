@@ -1,12 +1,13 @@
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class AuthResponseModel {
-  final User user;
   final String accessToken;
+  final User user;
 
   AuthResponseModel({
-    required this.user,
     required this.accessToken,
+    required this.user,
   });
 
   factory AuthResponseModel.fromJson(String str) =>
@@ -16,13 +17,13 @@ class AuthResponseModel {
 
   factory AuthResponseModel.fromMap(Map<String, dynamic> json) =>
       AuthResponseModel(
-        user: User.fromMap(json["user"]),
         accessToken: json["access_token"],
+        user: User.fromMap(json["user"]),
       );
 
   Map<String, dynamic> toMap() => {
-        "user": user.toMap(),
         "access_token": accessToken,
+        "user": user.toMap(),
       };
 }
 
@@ -50,7 +51,7 @@ class User {
         name: json["name"],
         email: json["email"],
         phone: json["phone"],
-        roles: json["roles"],
+        roles: json["roles"] ?? '-',
       );
 
   Map<String, dynamic> toMap() => {
