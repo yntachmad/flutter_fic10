@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic10/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_fic10/data/datasources/onboarding_local_datasource.dart';
 import 'package:flutter_fic10/data/models/responses/auth_response_model.dart';
+import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic10/presentation/home/pages/dashboard_page.dart';
 import 'package:flutter_fic10/presentation/onboarding/pages/onborading_page.dart';
 
+import 'presentation/auth/bloc/login/login_bloc.dart';
 import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/bloc/register/register_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +28,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => LogoutBloc(),
         ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -39,7 +45,18 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return const DashboardPage();
             } else {
-              return const OnboardingPage();
+              return FutureBuilder(
+                future: OnboardingLocalDatasource().getIsFirstTime(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return snapshot.data!
+                        ? const LoginPage()
+                        : const OnboardingPage();
+                  } else {
+                    return const OnboardingPage();
+                  }
+                },
+              );
             }
           },
         ),

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_fic10/presentation/auth/bloc/logout/logout_bloc.dart';
+import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
@@ -21,12 +26,7 @@ class _DashboardPageState extends State<DashboardPage> {
     const Center(
       child: Text('Notif'),
     ),
-    Center(
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('Logout'),
-      ),
-    ),
+    const LogoutWidget(),
     // const LogoutWidget(),
   ];
 
@@ -74,6 +74,34 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class LogoutWidget extends StatefulWidget {
+  const LogoutWidget({
+    super.key,
+    // required this.context,
+  });
+
+  // final BuildContext context;
+
+  @override
+  State<LogoutWidget> createState() => _LogoutWidgetState();
+}
+
+class _LogoutWidgetState extends State<LogoutWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          context.read<LogoutBloc>().add(const LogoutEvent.logout());
+          AuthLocalDataSource().removeAuthData();
+          context.pushReplacement(const LoginPage());
+        },
+        child: const Text('Logout'),
       ),
     );
   }

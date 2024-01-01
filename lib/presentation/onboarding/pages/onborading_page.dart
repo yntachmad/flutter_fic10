@@ -3,6 +3,7 @@ import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/buttons.dart';
+import '../../../data/datasources/onboarding_local_datasource.dart';
 import '../../auth/pages/login_page.dart';
 import '../models/onboarding_model.dart';
 import '../widgets/onboarding_content.dart';
@@ -80,7 +81,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       currentPage++;
                       setState(() {});
                     } else {
-                      // OnboardingLocalDatasource().saveOnboadingPassed();
+                      OnboardingLocalDatasource().saveOnboardingPassed();
                       navigate();
                     }
                   },

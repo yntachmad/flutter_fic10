@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/data/datasources/auth_local_datasource.dart';
+import 'package:flutter_fic10/data/models/request/login_request_model.dart';
+import 'package:flutter_fic10/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:flutter_fic10/presentation/home/pages/dashboard_page.dart';
 
 import '../../../core/components/buttons.dart';
@@ -50,11 +54,48 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           const SizedBox(height: 42.0),
-          Button.filled(
-            onPressed: () {
-              context.pushReplacement(const DashboardPage());
+          BlocConsumer<LoginBloc, LoginState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                success: (data) {
+                  AuthLocalDataSource().saveAuthData(data);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Login Success'),
+                      backgroundColor: Colors.lightGreen,
+                    ),
+                  );
+                  context.pushReplacement(const DashboardPage());
+                },
+                error: (message) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message),
+                      backgroundColor: Colors.redAccent,
+                    ),
+                  );
+                },
+              );
             },
-            label: 'LOG IN',
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () => Button.filled(
+                  onPressed: () {
+                    final requestModel = LoginRequestModel(
+                        email: emailController.text,
+                        password: passwordController.text);
+                    context
+                        .read<LoginBloc>()
+                        .add(LoginEvent.login(requestModel));
+                  },
+                  label: 'LOG IN',
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
           ),
 
           // BlocConsumer<LoginBloc, LoginState>(
