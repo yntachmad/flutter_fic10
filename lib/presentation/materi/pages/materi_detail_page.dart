@@ -22,6 +22,7 @@ class MateriDetailPage extends StatelessWidget {
             ),
             child: Image.asset(
               data.image,
+              width: context.deviceWidth,
               height: 470.0,
               fit: BoxFit.cover,
             ),
