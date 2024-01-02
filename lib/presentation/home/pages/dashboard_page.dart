@@ -7,6 +7,7 @@ import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
+
 import '../../materi/pages/materi_page.dart';
 import '../../profile/pages/profile_page.dart';
 import '../widgets/nav_menu.dart';
@@ -24,10 +25,10 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    // const MateriPage(),
-    const Center(
-      child: Text('Messages'),
-    ),
+    const MateriPage(),
+    // const Center(
+    //   child: Text('Messages'),
+    // ),
     const Center(
       child: Text('Notif'),
     ),
@@ -40,6 +41,8 @@ class _DashboardPageState extends State<DashboardPage> {
     _selectedIndex = index;
     setState(() {});
   }
+
+  //function for init
 
   @override
   Widget build(BuildContext context) {
