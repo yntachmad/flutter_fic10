@@ -7,6 +7,8 @@ import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/constants/colors.dart';
+import '../../materi/pages/materi_page.dart';
+import '../../profile/pages/profile_page.dart';
 import '../widgets/nav_menu.dart';
 import 'home_page.dart';
 
@@ -22,11 +24,15 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const Center(child: Text('Materi')),
+    // const MateriPage(),
+    const Center(
+      child: Text('Messages'),
+    ),
     const Center(
       child: Text('Notif'),
     ),
-    const LogoutWidget(),
+    const ProfilePage(),
+    // const LogoutWidget(),
     // const LogoutWidget(),
   ];
 
