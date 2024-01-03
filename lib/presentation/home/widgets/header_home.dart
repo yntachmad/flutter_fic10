@@ -68,7 +68,7 @@ class _HeaderHomeState extends State<HeaderHome> {
                             overflow: TextOverflow.ellipsis,
                           );
                         } else {
-                          return Text("No Date");
+                          return const Text("No Date");
                         }
                       },
                     )
