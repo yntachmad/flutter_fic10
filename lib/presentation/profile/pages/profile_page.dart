@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
 // import 'package:flutter_cbt/core/extensions/build_context_ext.dart';
 
 import '../../../core/components/custom_scaffold.dart';
+import '../../../data/datasources/auth_local_datasource.dart';
+import '../../auth/bloc/logout/logout_bloc.dart';
 import '../../auth/pages/login_page.dart';
 import '../widgets/profile_menu.dart';
 
@@ -92,6 +95,8 @@ class ProfilePage extends StatelessWidget {
           ProfileMenu(
             label: 'Logout',
             onPressed: () {
+              context.read<LogoutBloc>().add(const LogoutEvent.logout());
+              AuthLocalDataSource().removeAuthData();
               context.pushAndRemoveUntil(const LoginPage(), (route) => false);
             },
           ),
