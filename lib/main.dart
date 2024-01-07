@@ -7,12 +7,14 @@ import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic10/presentation/home/pages/dashboard_page.dart';
 import 'package:flutter_fic10/presentation/onboarding/pages/onborading_page.dart';
 
+import 'data/datasources/materi_remote_datasource.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
 import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/bloc/register/register_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/home/bloc/content/content_bloc.dart';
+import 'presentation/materi/bloc/materi/materi_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ContentBloc(ContentRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => MateriBloc(MateriRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
