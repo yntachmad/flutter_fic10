@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'content_bloc.dart';
+part of 'materi_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,58 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ContentEvent {
+mixin _$MateriEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) getContentById,
+    required TResult Function() getAllMateri,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? getContentById,
+    TResult? Function()? getAllMateri,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? getContentById,
+    TResult Function()? getAllMateri,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_getContentById value) getContentById,
+    required TResult Function(_GetAllMateri value) getAllMateri,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_getContentById value)? getContentById,
+    TResult? Function(_GetAllMateri value)? getAllMateri,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_getContentById value)? getContentById,
+    TResult Function(_GetAllMateri value)? getAllMateri,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ContentEventCopyWith<$Res> {
-  factory $ContentEventCopyWith(
-          ContentEvent value, $Res Function(ContentEvent) then) =
-      _$ContentEventCopyWithImpl<$Res, ContentEvent>;
+abstract class $MateriEventCopyWith<$Res> {
+  factory $MateriEventCopyWith(
+          MateriEvent value, $Res Function(MateriEvent) then) =
+      _$MateriEventCopyWithImpl<$Res, MateriEvent>;
 }
 
 /// @nodoc
-class _$ContentEventCopyWithImpl<$Res, $Val extends ContentEvent>
-    implements $ContentEventCopyWith<$Res> {
-  _$ContentEventCopyWithImpl(this._value, this._then);
+class _$MateriEventCopyWithImpl<$Res, $Val extends MateriEvent>
+    implements $MateriEventCopyWith<$Res> {
+  _$MateriEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +83,7 @@ abstract class _$$StartedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$StartedImplCopyWithImpl<$Res>
-    extends _$ContentEventCopyWithImpl<$Res, _$StartedImpl>
+    extends _$MateriEventCopyWithImpl<$Res, _$StartedImpl>
     implements _$$StartedImplCopyWith<$Res> {
   __$$StartedImplCopyWithImpl(
       _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
@@ -97,7 +97,7 @@ class _$StartedImpl implements _Started {
 
   @override
   String toString() {
-    return 'ContentEvent.started()';
+    return 'MateriEvent.started()';
   }
 
   @override
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) getContentById,
+    required TResult Function() getAllMateri,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? getContentById,
+    TResult? Function()? getAllMateri,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? getContentById,
+    TResult Function()? getAllMateri,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -144,7 +144,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_getContentById value) getContentById,
+    required TResult Function(_GetAllMateri value) getAllMateri,
   }) {
     return started(this);
   }
@@ -153,7 +153,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_getContentById value)? getContentById,
+    TResult? Function(_GetAllMateri value)? getAllMateri,
   }) {
     return started?.call(this);
   }
@@ -162,7 +162,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_getContentById value)? getContentById,
+    TResult Function(_GetAllMateri value)? getAllMateri,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -172,99 +172,72 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements ContentEvent {
+abstract class _Started implements MateriEvent {
   const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$getContentByIdImplCopyWith<$Res> {
-  factory _$$getContentByIdImplCopyWith(_$getContentByIdImpl value,
-          $Res Function(_$getContentByIdImpl) then) =
-      __$$getContentByIdImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String id});
+abstract class _$$GetAllMateriImplCopyWith<$Res> {
+  factory _$$GetAllMateriImplCopyWith(
+          _$GetAllMateriImpl value, $Res Function(_$GetAllMateriImpl) then) =
+      __$$GetAllMateriImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$getContentByIdImplCopyWithImpl<$Res>
-    extends _$ContentEventCopyWithImpl<$Res, _$getContentByIdImpl>
-    implements _$$getContentByIdImplCopyWith<$Res> {
-  __$$getContentByIdImplCopyWithImpl(
-      _$getContentByIdImpl _value, $Res Function(_$getContentByIdImpl) _then)
+class __$$GetAllMateriImplCopyWithImpl<$Res>
+    extends _$MateriEventCopyWithImpl<$Res, _$GetAllMateriImpl>
+    implements _$$GetAllMateriImplCopyWith<$Res> {
+  __$$GetAllMateriImplCopyWithImpl(
+      _$GetAllMateriImpl _value, $Res Function(_$GetAllMateriImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$getContentByIdImpl(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$getContentByIdImpl implements _getContentById {
-  const _$getContentByIdImpl(this.id);
-
-  @override
-  final String id;
+class _$GetAllMateriImpl implements _GetAllMateri {
+  const _$GetAllMateriImpl();
 
   @override
   String toString() {
-    return 'ContentEvent.getContentById(id: $id)';
+    return 'MateriEvent.getAllMateri()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$getContentByIdImpl &&
-            (identical(other.id, id) || other.id == id));
+        (other.runtimeType == runtimeType && other is _$GetAllMateriImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$getContentByIdImplCopyWith<_$getContentByIdImpl> get copyWith =>
-      __$$getContentByIdImplCopyWithImpl<_$getContentByIdImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String id) getContentById,
+    required TResult Function() getAllMateri,
   }) {
-    return getContentById(id);
+    return getAllMateri();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String id)? getContentById,
+    TResult? Function()? getAllMateri,
   }) {
-    return getContentById?.call(id);
+    return getAllMateri?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String id)? getContentById,
+    TResult Function()? getAllMateri,
     required TResult orElse(),
   }) {
-    if (getContentById != null) {
-      return getContentById(id);
+    if (getAllMateri != null) {
+      return getAllMateri();
     }
     return orElse();
   }
@@ -273,51 +246,46 @@ class _$getContentByIdImpl implements _getContentById {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_getContentById value) getContentById,
+    required TResult Function(_GetAllMateri value) getAllMateri,
   }) {
-    return getContentById(this);
+    return getAllMateri(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_getContentById value)? getContentById,
+    TResult? Function(_GetAllMateri value)? getAllMateri,
   }) {
-    return getContentById?.call(this);
+    return getAllMateri?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_getContentById value)? getContentById,
+    TResult Function(_GetAllMateri value)? getAllMateri,
     required TResult orElse(),
   }) {
-    if (getContentById != null) {
-      return getContentById(this);
+    if (getAllMateri != null) {
+      return getAllMateri(this);
     }
     return orElse();
   }
 }
 
-abstract class _getContentById implements ContentEvent {
-  const factory _getContentById(final String id) = _$getContentByIdImpl;
-
-  String get id;
-  @JsonKey(ignore: true)
-  _$$getContentByIdImplCopyWith<_$getContentByIdImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _GetAllMateri implements MateriEvent {
+  const factory _GetAllMateri() = _$GetAllMateriImpl;
 }
 
 /// @nodoc
-mixin _$ContentState {
+mixin _$MateriState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(ContentResponeModel data) success,
+    required TResult Function(MateriResponseModel materi) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -325,7 +293,7 @@ mixin _$ContentState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(ContentResponeModel data)? success,
+    TResult? Function(MateriResponseModel materi)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -333,7 +301,7 @@ mixin _$ContentState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(ContentResponeModel data)? success,
+    TResult Function(MateriResponseModel materi)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -365,16 +333,16 @@ mixin _$ContentState {
 }
 
 /// @nodoc
-abstract class $ContentStateCopyWith<$Res> {
-  factory $ContentStateCopyWith(
-          ContentState value, $Res Function(ContentState) then) =
-      _$ContentStateCopyWithImpl<$Res, ContentState>;
+abstract class $MateriStateCopyWith<$Res> {
+  factory $MateriStateCopyWith(
+          MateriState value, $Res Function(MateriState) then) =
+      _$MateriStateCopyWithImpl<$Res, MateriState>;
 }
 
 /// @nodoc
-class _$ContentStateCopyWithImpl<$Res, $Val extends ContentState>
-    implements $ContentStateCopyWith<$Res> {
-  _$ContentStateCopyWithImpl(this._value, this._then);
+class _$MateriStateCopyWithImpl<$Res, $Val extends MateriState>
+    implements $MateriStateCopyWith<$Res> {
+  _$MateriStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -391,7 +359,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$ContentStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$MateriStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -405,7 +373,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'ContentState.initial()';
+    return 'MateriState.initial()';
   }
 
   @override
@@ -423,7 +391,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(ContentResponeModel data) success,
+    required TResult Function(MateriResponseModel materi) success,
   }) {
     return initial();
   }
@@ -434,7 +402,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(ContentResponeModel data)? success,
+    TResult? Function(MateriResponseModel materi)? success,
   }) {
     return initial?.call();
   }
@@ -445,7 +413,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(ContentResponeModel data)? success,
+    TResult Function(MateriResponseModel materi)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -492,7 +460,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ContentState {
+abstract class _Initial implements MateriState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -505,7 +473,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$ContentStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$MateriStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -519,7 +487,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'ContentState.loading()';
+    return 'MateriState.loading()';
   }
 
   @override
@@ -537,7 +505,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(ContentResponeModel data) success,
+    required TResult Function(MateriResponseModel materi) success,
   }) {
     return loading();
   }
@@ -548,7 +516,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(ContentResponeModel data)? success,
+    TResult? Function(MateriResponseModel materi)? success,
   }) {
     return loading?.call();
   }
@@ -559,7 +527,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(ContentResponeModel data)? success,
+    TResult Function(MateriResponseModel materi)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -606,7 +574,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ContentState {
+abstract class _Loading implements MateriState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -621,7 +589,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$ContentStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$MateriStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -651,7 +619,7 @@ class _$ErrorImpl implements _Error {
 
   @override
   String toString() {
-    return 'ContentState.error(message: $message)';
+    return 'MateriState.error(message: $message)';
   }
 
   @override
@@ -677,7 +645,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(ContentResponeModel data) success,
+    required TResult Function(MateriResponseModel materi) success,
   }) {
     return error(message);
   }
@@ -688,7 +656,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(ContentResponeModel data)? success,
+    TResult? Function(MateriResponseModel materi)? success,
   }) {
     return error?.call(message);
   }
@@ -699,7 +667,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(ContentResponeModel data)? success,
+    TResult Function(MateriResponseModel materi)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -746,7 +714,7 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements ContentState {
+abstract class _Error implements MateriState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
@@ -761,12 +729,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ContentResponeModel data});
+  $Res call({MateriResponseModel materi});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$ContentStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$MateriStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -775,13 +743,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? materi = null,
   }) {
     return _then(_$SuccessImpl(
-      null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as ContentResponeModel,
+      null == materi
+          ? _value.materi
+          : materi // ignore: cast_nullable_to_non_nullable
+              as MateriResponseModel,
     ));
   }
 }
@@ -789,14 +757,14 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.data);
+  const _$SuccessImpl(this.materi);
 
   @override
-  final ContentResponeModel data;
+  final MateriResponseModel materi;
 
   @override
   String toString() {
-    return 'ContentState.success(data: $data)';
+    return 'MateriState.success(materi: $materi)';
   }
 
   @override
@@ -804,11 +772,11 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.materi, materi) || other.materi == materi));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, materi);
 
   @JsonKey(ignore: true)
   @override
@@ -822,9 +790,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(ContentResponeModel data) success,
+    required TResult Function(MateriResponseModel materi) success,
   }) {
-    return success(data);
+    return success(materi);
   }
 
   @override
@@ -833,9 +801,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(ContentResponeModel data)? success,
+    TResult? Function(MateriResponseModel materi)? success,
   }) {
-    return success?.call(data);
+    return success?.call(materi);
   }
 
   @override
@@ -844,11 +812,11 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(ContentResponeModel data)? success,
+    TResult Function(MateriResponseModel materi)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(materi);
     }
     return orElse();
   }
@@ -891,10 +859,10 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements ContentState {
-  const factory _Success(final ContentResponeModel data) = _$SuccessImpl;
+abstract class _Success implements MateriState {
+  const factory _Success(final MateriResponseModel materi) = _$SuccessImpl;
 
-  ContentResponeModel get data;
+  MateriResponseModel get materi;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;

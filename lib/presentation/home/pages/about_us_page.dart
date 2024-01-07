@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
 import 'package:flutter_fic10/presentation/home/bloc/content/content_bloc.dart';
 
-import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/custom_scaffold.dart';
 
 class AboutUsPage extends StatefulWidget {
@@ -37,7 +36,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                   ),
               success: (data) {
                 return ListView(
-                  padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 30.0),
+                  // padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 30.0),
                   children: [
                     data.data.isEmpty
                         ? const SizedBox()
@@ -48,10 +47,13 @@ class _AboutUsPageState extends State<AboutUsPage> {
                             fit: BoxFit.cover,
                           ),
                     //  Assets.images.menu.aboutUs.image(),
-                    Text(
-                      data.data.isEmpty ? 'No data' : data.data[0].content,
-                      textAlign: TextAlign.justify,
-                      style: const TextStyle(fontSize: 18.0),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        data.data.isEmpty ? 'No data' : data.data[0].content,
+                        textAlign: TextAlign.justify,
+                        style: const TextStyle(fontSize: 18.0),
+                      ),
                     ),
                   ],
                 );

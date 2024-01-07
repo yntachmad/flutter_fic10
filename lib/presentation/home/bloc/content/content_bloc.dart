@@ -15,7 +15,7 @@ class ContentBloc extends Bloc<ContentEvent, ContentState> {
       final response = await contentRemoteDataource.getContentById(event.id);
       response.fold(
         (l) => emit(_Error(l)),
-        (r) => _Success(r),
+        (r) => emit(_Success(r)),
       );
     });
   }
