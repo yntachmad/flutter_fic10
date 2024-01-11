@@ -12,7 +12,7 @@ class MateriBloc extends Bloc<MateriEvent, MateriState> {
   MateriBloc(this.materiRemoteDatasource) : super(const _Initial()) {
     on<_GetAllMateri>((event, emit) async {
       emit(const _Loading());
-      final response = await materiRemoteDatasource.getAllMateris();
+      final response = await materiRemoteDatasource.getAllMateri();
       response.fold(
         (l) => emit(_Error(l)),
         (r) => emit(

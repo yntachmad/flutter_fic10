@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
@@ -40,8 +41,12 @@ class _AboutUsPageState extends State<AboutUsPage> {
                   children: [
                     data.data.isEmpty
                         ? const SizedBox()
-                        : Image.network(
-                            data.data[0].image,
+                        : CachedNetworkImage(
+                            imageUrl: data.data[0].image,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                             width: context.deviceWidth,
                             height: 470.0,
                             fit: BoxFit.cover,

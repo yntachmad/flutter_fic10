@@ -8,7 +8,7 @@ import 'auth_local_datasource.dart';
 
 class MateriRemoteDatasource {
   //get content by id
-  Future<Either<String, MateriResponseModel>> getAllMateris() async {
+  Future<Either<String, MateriResponseModel>> getAllMateri() async {
     final authData = await AuthLocalDataSource().getAuthData();
     final response = await http.get(
       Uri.parse('${Variables.baseUrl}/api/materis'),
