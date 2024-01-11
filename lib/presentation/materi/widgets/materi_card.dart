@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/data/models/responses/materi_response_model.dart';
 
 import '../../../core/constants/colors.dart';
 import '../models/materi_models.dart';
 import '../pages/materi_detail_page.dart';
 
 class MateriCard extends StatelessWidget {
-  final MateriModel data;
+  final MateriResponseModel data;
   const MateriCard({super.key, required this.data});
 
   @override
@@ -40,7 +41,7 @@ class MateriCard extends StatelessWidget {
               children: [
                 Flexible(
                   child: Text(
-                    data.name,
+                    data.data[0].title,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,

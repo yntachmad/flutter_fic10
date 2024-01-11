@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/custom_scaffold.dart';
+import '../bloc/materi/materi_bloc.dart';
 import '../models/materi_models.dart';
 import '../widgets/materi_card.dart';
 
@@ -14,6 +16,14 @@ class MateriPage extends StatefulWidget {
 }
 
 class _MateriPageState extends State<MateriPage> {
+  @override
+  void initState() {
+    context.read<MateriBloc>().add(
+          const MateriEvent.getAllMateri(),
+        );
+    super.initState();
+  }
+
   final List<MateriModel> datas = [
     MateriModel(
       image: Assets.images.materi1.path,
@@ -45,14 +55,31 @@ class _MateriPageState extends State<MateriPage> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 24.0),
         children: [
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: datas.length,
-            separatorBuilder: (context, index) => const SizedBox(height: 16.0),
-            itemBuilder: (context, index) => MateriCard(
-              data: datas[index],
-            ),
+          BlocBuilder<MateriBloc, MateriState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Center(
+                    child: Text('Error'),
+                  );
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                success: (materi) {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: materi.data.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16.0),
+                    itemBuilder: (context, index) => MateriCard(
+                      data: materi[index],
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),

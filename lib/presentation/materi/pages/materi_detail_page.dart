@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
 
 import '../../../core/components/custom_scaffold.dart';
+import '../../../data/models/responses/materi_response_model.dart';
 import '../models/materi_models.dart';
 // import '/models/materi_models.dart';
 
 class MateriDetailPage extends StatelessWidget {
-  final MateriModel data;
+  final MateriResponseModel data;
   const MateriDetailPage({super.key, required this.data});
 
   @override
@@ -19,8 +20,8 @@ class MateriDetailPage extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(30.0),
             ),
-            child: Image.asset(
-              data.image,
+            child: Image.asset(""
+              // data.image,
               width: context.deviceWidth,
               height: 470.0,
               fit: BoxFit.cover,
