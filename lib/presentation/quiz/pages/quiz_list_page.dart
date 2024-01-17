@@ -75,14 +75,33 @@ class _QuizListPageState extends State<QuizListPage> {
             ],
           ),
           const SizedBox(height: 30.0),
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: datas.length,
-            separatorBuilder: (context, index) => const SizedBox(height: 18.0),
-            itemBuilder: (context, index) => QuizCard(
-              data: datas[index],
-            ),
+          BlocBuilder<UjianByKategoriBloc, UjianByKategoriState>(
+            builder: (context, state) {
+              return state.maybeWhen(
+                orElse: () {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+                success: (data) {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: datas.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 18.0),
+                    itemBuilder: (context, index) => QuizCard(
+                      data: datas[index],
+                    ),
+                  );
+                },
+                notfound: () {
+                  return const Center(
+                    child: Text('Tidak ada quiz'),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),
