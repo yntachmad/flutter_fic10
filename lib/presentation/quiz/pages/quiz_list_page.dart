@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_fic10/presentation/quiz/bloc/bloc/ujian_by_kategori_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/custom_scaffold.dart';
@@ -13,6 +15,15 @@ class QuizListPage extends StatefulWidget {
 }
 
 class _QuizListPageState extends State<QuizListPage> {
+  //sampe sini
+  @override
+  void initState() {
+    context.read<UjianByKategoriBloc>().add(
+          const UjianByKategoriEvent.getUjianByKategori('Verbal'),
+        );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<QuizModel> datas = [

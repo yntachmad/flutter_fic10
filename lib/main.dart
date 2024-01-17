@@ -6,8 +6,10 @@ import 'package:flutter_fic10/data/models/responses/auth_response_model.dart';
 import 'package:flutter_fic10/presentation/auth/pages/login_page.dart';
 import 'package:flutter_fic10/presentation/home/pages/dashboard_page.dart';
 import 'package:flutter_fic10/presentation/onboarding/pages/onborading_page.dart';
+import 'package:flutter_fic10/presentation/quiz/bloc/bloc/ujian_by_kategori_bloc.dart';
 
 import 'data/datasources/materi_remote_datasource.dart';
+import 'data/datasources/ujian_remote_datasource.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
 import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/bloc/register/register_bloc.dart';
@@ -41,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => MateriBloc(MateriRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => UjianByKategoriBloc(UjianRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
