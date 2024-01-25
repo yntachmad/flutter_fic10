@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_fic10/presentation/quiz/bloc/bloc/ujian_by_kategori_bloc.dart';
+import 'package:flutter_fic10/presentation/quiz/bloc/create_ujian/create_ujian_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/custom_scaffold.dart';
+import '../bloc/ujian_by_kategori/ujian_by_kategori_bloc.dart';
 import '../models/quiz_model.dart';
 import '../widgets/quiz_card.dart';
 
@@ -75,33 +76,49 @@ class _QuizListPageState extends State<QuizListPage> {
             ],
           ),
           const SizedBox(height: 30.0),
-          BlocBuilder<UjianByKategoriBloc, UjianByKategoriState>(
-            builder: (context, state) {
-              return state.maybeWhen(
+          BlocListener<UjianByKategoriBloc, UjianByKategoriState>(
+            listener: (context, state) {
+              state.maybeWhen(
                 orElse: () {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-                success: (data) {
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: datas.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 18.0),
-                    itemBuilder: (context, index) => QuizCard(
-                      data: datas[index],
-                    ),
-                  );
+                  // return const Center(
+                  //   child: CircularProgressIndicator(),
+                  // );
                 },
                 notfound: () {
-                  return const Center(
-                    child: Text('Tidak ada quiz'),
-                  );
+                  return context
+                      .read<CreateUjianBloc>()
+                      .add(const CreateUjianEvent.createUjian());
                 },
               );
             },
+            child: BlocBuilder<UjianByKategoriBloc, UjianByKategoriState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  success: (data) {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: datas.length,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 18.0),
+                      itemBuilder: (context, index) => QuizCard(
+                        data: datas[index],
+                      ),
+                    );
+                  },
+                  notfound: () {
+                    return const Center(
+                      child: Text('Tidak ada quiz'),
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),
