@@ -17,6 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'presentation/home/bloc/content/content_bloc.dart';
 import 'presentation/materi/bloc/materi/materi_bloc.dart';
 import 'presentation/quiz/bloc/create_ujian/create_ujian_bloc.dart';
+import 'presentation/quiz/bloc/dafar_soal/daftar_soal_bloc.dart';
 import 'presentation/quiz/bloc/ujian_by_kategori/ujian_by_kategori_bloc.dart';
 
 void main() {
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CreateUjianBloc(UjianRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DaftarSoalBloc(),
         ),
       ],
       child: MaterialApp(

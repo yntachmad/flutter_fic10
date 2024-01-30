@@ -26,7 +26,7 @@ class UjianRemoteDatasource {
   Future<Either<String, String>> createUjian() async {
     final authData = await AuthLocalDataSource().getAuthData();
     final response = await http.post(
-        Uri.parse('${Variables.baseUrl}api/create-ujian'),
+        Uri.parse('${Variables.baseUrl}/api/create-ujian'),
         headers: <String, String>{
           'Content-type': 'application/json; charset=UTF-8',
           'Authorization': 'Bearer ${authData?.accessToken}',

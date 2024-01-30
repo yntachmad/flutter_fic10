@@ -112,8 +112,28 @@ class _QuizListPageState extends State<QuizListPage> {
                     );
                   },
                   notfound: () {
-                    return const Center(
-                      child: Text('Tidak ada quiz'),
+                    return BlocBuilder<CreateUjianBloc, CreateUjianState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          orElse: () {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          },
+                          success: (_) {
+                            return ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: datas.length,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 18.0),
+                              itemBuilder: (context, index) => QuizCard(
+                                data: datas[index],
+                              ),
+                            );
+                          },
+                        );
+                      },
                     );
                   },
                 );
