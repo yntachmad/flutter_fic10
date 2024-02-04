@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_fic10/core/extensions/build_context_ext.dart';
+import 'package:flutter_fic10/presentation/quiz/bloc/ujian_by_kategori/ujian_by_kategori_bloc.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/custom_scaffold.dart';
@@ -22,6 +24,14 @@ class QuizStartPage extends StatefulWidget {
 }
 
 class _QuizStartPageState extends State<QuizStartPage> {
+  @override
+  void initState() {
+    // context
+    //     .read<UjianByKategoriBloc>()
+    //     .add(UjianByKategoriEvent.getUjianByKategori(widget.data.kategori));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     int quizNumber = 6;
