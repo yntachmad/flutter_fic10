@@ -34,7 +34,7 @@ class _QuizStartPageState extends State<QuizStartPage> {
 
   @override
   Widget build(BuildContext context) {
-    int quizNumber = 6;
+    int quizNumber = 0;
 
     return CustomScaffold(
       appBarTitle: Text(widget.data.name),
